@@ -8,23 +8,43 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import Drawer from "@mui/material/Drawer";
+
+import { drawerWidth } from "../../config/layout";
 
 import logo from "../../assets/logo/logo.png";
 import menuItems from "../../utils/menuItems";
 
 function Sidebar() {
   return (
-    <Box
-      sx={{
-        width: 250,
-        height: "100vh",
-        bgcolor: "#121212",
-        color: "#ffffff",
-        display: "flex",
-        flexDirection: "column",
-        p: 3,
-      }}
-    >
+      <Drawer
+        variant="permanent"
+        sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+
+        "& .MuiDrawer-paper": {
+
+            width: drawerWidth,
+
+            boxSizing: "border-box",
+
+            bgcolor: "#121212",
+
+            color: "#fff",
+
+            borderRight: "none",
+
+            p:3,
+
+            display:"flex",
+
+            flexDirection:"column"
+
+        }
+
+    }}
+      >
       {/* Logo */}
       <Box
           sx={{
@@ -180,7 +200,7 @@ function Sidebar() {
       >
         © 2026 Kinesio Vitality
       </Typography>
-    </Box>
+    </Drawer>
   );
 }
 

@@ -21,11 +21,15 @@ function Topbar() {
       position="sticky"
       elevation={0}
       sx={{
-        bgcolor: "#FFFFFF",
-        color: "#212121",
-        borderBottom: "1px solid #E0E0E0",
-      }}
-    >
+
+            zIndex:(theme)=>theme.zIndex.drawer+1,
+
+            bgcolor:"#fff",
+
+            color:"#212121"
+
+        }}
+   >
       <Toolbar
         sx={{
           justifyContent: "space-between",
@@ -46,15 +50,25 @@ function Topbar() {
           <Paper
             elevation={0}
             sx={{
-              display: "flex",
-              alignItems: "center",
-              px: 2,
-              py: 0.5,
-              width: 350,
-              borderRadius: 3,
-              bgcolor: "#F5F5F5",
-            }}
-          >
+                display:"flex",
+                alignItems:"center",
+                px:2,
+                py:0.5,
+
+                width:{
+                    xs:170,
+                    sm:240,
+                    md:320,
+                    lg:380
+                },
+
+                maxWidth:"100%",
+
+                borderRadius:3,
+
+                bgcolor:"#F5F5F5"
+              }}
+            >
             <SearchRoundedIcon
               sx={{
                 color: "#757575",

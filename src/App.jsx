@@ -1,17 +1,12 @@
 import MainLayout from "./components/layout/MainLayout";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
-
-    return (
-
-        <MainLayout>
-
-            <h1>Dashboard</h1>
-
-        </MainLayout>
-
-    );
-
+  return (
+    <MainLayout>
+      <Dashboard />
+    </MainLayout>
+  );
 }
 
 export default App;

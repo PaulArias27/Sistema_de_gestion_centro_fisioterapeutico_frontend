@@ -4,50 +4,44 @@ import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 import Footer from "./Footer";
 
-function MainLayout({ children }) {
+import { drawerWidth } from "../../config/layout";
 
-    return (
+function MainLayout({ children }) {
+  return (
+    <Box sx={{ display: "flex", minHeight: "100vh" }}>
+
+      <Sidebar />
+
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          width: `calc(100% - ${drawerWidth}px)`,
+          display: "flex",
+          flexDirection: "column",
+          minWidth: 0,
+          bgcolor: "#F5F5F5",
+        }}
+      >
+
+        <Topbar />
 
         <Box
-            sx={{
-                display: "flex",
-                minHeight: "100vh",
-            }}
+          sx={{
+            flex: 1,
+            p: 3,
+            overflow: "auto",
+          }}
         >
-
-            <Sidebar />
-
-            <Box
-                sx={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    minHeight: "100vh"
-                }}
-            >
-
-                <Topbar />
-
-                <Box
-                    sx={{
-                        flex: 1,
-                        p: 4,
-                        bgcolor: "#F5F5F5"
-                    }}
-                >
-
-                    {children}
-
-                </Box>
-
-                <Footer />
-
-            </Box>
-
+          {children}
         </Box>
 
-    );
+        <Footer />
 
+      </Box>
+
+    </Box>
+  );
 }
 
 export default MainLayout;

@@ -6,6 +6,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import MainLayout from "../components/layout/MainLayout";
 import PrivateRoute from "./PrivateRoute";
 import Pacientes from "../pages/pacientes/Pacientes";
+import Fisioterapeutas from "../pages/fisioterapeutas/Fisioterapeutas";
 
 function AppRoutes() {
 
@@ -21,23 +22,19 @@ function AppRoutes() {
                 />
 
                 <Route
-                    path="/"
+                    path="/dashboard"
                     element={
                         <PrivateRoute>
-
                             <MainLayout>
-
                                 <Dashboard />
-
                             </MainLayout>
-
                         </PrivateRoute>
                     }
                 />
 
                 <Route
-                    path="*"
-                    element={<Navigate to="/" />}
+                    path="/"
+                    element={<Navigate to="/dashboard" replace />}
                 />
 
                 <Route
@@ -46,6 +43,17 @@ function AppRoutes() {
                         <PrivateRoute>
                             <MainLayout>
                                 <Pacientes />
+                            </MainLayout>
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/fisioterapeutas"
+                    element={
+                        <PrivateRoute>
+                            <MainLayout>
+                                <Fisioterapeutas />
                             </MainLayout>
                         </PrivateRoute>
                     }

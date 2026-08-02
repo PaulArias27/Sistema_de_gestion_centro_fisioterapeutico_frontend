@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Button,
   Divider,
   List,
   ListItemButton,
@@ -8,87 +9,122 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import Drawer from "@mui/material/Drawer";
 
-import { drawerWidth } from "../../config/layout";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+    adminMenu,
+    fisioterapeutaMenu,
+} from "../../utils/menuItems";
 import logo from "../../assets/logo/logo.png";
-import menuItems from "../../utils/menuItems";
+
+
+import { useAuth } from "../../hooks/useAuth";
+import { logout as logoutService } from "../../services/authService";
+
 
 function Sidebar() {
+  const { usuario, logout } = useAuth();
+  const menuItems =
+    usuario?.rol === "ADMIN"
+        ? adminMenu
+        : fisioterapeutaMenu;
+  const getInitials = (name) => {
+
+    if (!name) return "U";
+
+    const words = name.trim().split(" ");
+
+    if (words.length === 1) {
+        return words[0][0].toUpperCase();
+    }
+
+    return (
+        words[0][0] +
+        words[1][0]
+    ).toUpperCase();
+
+};
+
+  
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLogout = async () => {
+
+  try {
+
+    await logoutService();
+
+  } catch (error) {
+
+    console.error("Error al cerrar sesión:", error);
+
+  } finally {
+
+    logout();
+
+    navigate("/login", { replace: true });
+
+  }
+
+};
+
   return (
-      <Drawer
-        variant="permanent"
-        sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-
-        "& .MuiDrawer-paper": {
-
-            width: drawerWidth,
-
-            boxSizing: "border-box",
-
-            bgcolor: "#121212",
-
-            color: "#fff",
-
-            borderRight: "none",
-
-            p:3,
-
-            display:"flex",
-
-            flexDirection:"column"
-
-        }
-
-    }}
-      >
+    <Box
+      sx={{
+        width: 250,
+        height: "100vh",
+        bgcolor: "#121212",
+        color: "#ffffff",
+        display: "flex",
+        flexDirection: "column",
+        p: 3,
+      }}
+    >
       {/* Logo */}
       <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: 2,
-            py: 2,
-            mb: 2,
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 2,
+          py: 2,
+          mb: 2,
+        }}
+      >
+        <img
+          src={logo}
+          alt="Kinesio Vitality"
+          style={{
+            width: 55,
+            height: 55,
+            objectFit: "contain",
           }}
-        >
-          <img
-            src={logo}
-            alt="Kinesio Vitality"
-            style={{
-              width: 55,
-              height: 55,
-              objectFit: "contain",
+        />
+
+        <Box>
+          <Typography
+            sx={{
+              color: "#FFFFFF",
+              fontWeight: 700,
+              fontSize: "1.1rem",
+              lineHeight: 1.2,
             }}
-          />
+          >
+            Kinesio
+          </Typography>
 
-          <Box>
-            <Typography
-              sx={{
-                color: "#FFFFFF",
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                lineHeight: 1.2,
-              }}
-            >
-              Kinesio
-            </Typography>
-
-            <Typography
-              sx={{
-                color: "#FFFFFF",
-                fontWeight: 500,
-                fontSize: "1rem",
-                lineHeight: 1.2,
-              }}
-            >
-              Vitality
-            </Typography>
-          </Box>
+          <Typography
+            sx={{
+              color: "#FFFFFF",
+              fontWeight: 500,
+              fontSize: "1rem",
+              lineHeight: 1.2,
+            }}
+          >
+            Vitality
+          </Typography>
         </Box>
+      </Box>
 
       <Divider
         sx={{
@@ -113,7 +149,7 @@ function Sidebar() {
             fontWeight: "bold",
           }}
         >
-          P
+          {getInitials(usuario?.username)}
         </Avatar>
 
         <Box ml={2}>
@@ -122,16 +158,17 @@ function Sidebar() {
               fontWeight: 600,
             }}
           >
-            Paul Arias
+            {usuario?.username}
           </Typography>
 
           <Typography
             variant="body2"
             sx={{
               color: "#BDBDBD",
+              textTransform: "capitalize",
             }}
           >
-            Administrador
+            {usuario?.rol}
           </Typography>
         </Box>
       </Box>
@@ -148,59 +185,92 @@ function Sidebar() {
           sx={{
             flex: 1,
             overflowY: "auto",
-            mt: 1,
           }}
         >
-        {menuItems.map((item) => (
-          <ListItemButton
-            key={item.text}
-            sx={{
-              borderRadius: 2,
-              mb: 1,
-
-              "&:hover": {
-                bgcolor: "#F57C00",
-              },
-            }}
-          >
-            <ListItemIcon
+          {menuItems.map((item) => (
+            <ListItemButton
+              key={item.text}
+              onClick={() => navigate(item.path)}
+              selected={location.pathname === item.path}
               sx={{
-                color: "#ffffff",
-                minWidth: 40,
+                borderRadius: 2,
+                mb: 1,
+
+                "&.Mui-selected": {
+                  bgcolor: "#F57C00",
+                },
+
+                "&.Mui-selected:hover": {
+                  bgcolor: "#E65100",
+                },
+
+                "&:hover": {
+                  bgcolor: "#2A2A2A",
+                },
               }}
             >
-              {item.icon}
-            </ListItemIcon>
+              <ListItemIcon
+                sx={{
+                  color:
+                    location.pathname === item.path
+                      ? "#FFFFFF"
+                      : "#BDBDBD",
+                  minWidth: 40,
+                }}
+              >
+                {item.icon}
+              </ListItemIcon>
 
-            <ListItemText
-              primary={item.text}
-              primaryTypographyProps={{
-                fontSize: 15,
-                fontWeight: 500,
-              }}
-            />
-          </ListItemButton>
-        ))}
-      </List>
+              <ListItemText
+                primary={item.text}
+                primaryTypographyProps={{
+                  sx: {
+                    color: "#FFFFFF",
+                    fontSize: 15,
+                    fontWeight: 500,
+                  },
+                }}
+              />
+            </ListItemButton>
+          ))}
+        </List>
 
       <Divider
         sx={{
           borderColor: "#2f2f2f",
-          mt: 2,
-          mb: 2,
+          my: 2,
         }}
       />
+
+      {/* Botón Logout */}
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={handleLogout}
+        sx={{
+          bgcolor: "#F57C00",
+          py: 1.2,
+          borderRadius: 2,
+
+          "&:hover": {
+            bgcolor: "#E65100",
+          },
+        }}
+      >
+        Cerrar Sesión
+      </Button>
 
       <Typography
         variant="caption"
         sx={{
           color: "#757575",
           textAlign: "center",
+          mt: 2,
         }}
       >
         © 2026 Kinesio Vitality
       </Typography>
-    </Drawer>
+    </Box>
   );
 }
 

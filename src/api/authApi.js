@@ -1,20 +1,22 @@
 import axiosClient from "./axiosClient";
 
-export const login = async (credentials) => {
-    const response = await axiosClient.post("/auth/login", credentials);
-    return response.data;
-};
+export async function login(credentials) {
 
-export const logout = async (token) => {
     const response = await axiosClient.post(
-        "/auth/logout",
-        {},
-        {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        }
+        "/auth/login",
+        credentials
     );
 
     return response.data;
-};
+
+}
+
+export async function logout() {
+
+    const response = await axiosClient.post(
+        "/auth/logout"
+    );
+
+    return response.data;
+
+}

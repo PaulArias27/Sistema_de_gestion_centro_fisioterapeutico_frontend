@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import Pacientes from "../pages/pacientes/Pacientes";
 import Fisioterapeutas from "../pages/fisioterapeutas/Fisioterapeutas";
 import Servicios from "../pages/servicios/Servicios";
+import Sucursales from "../pages/sucursales/Sucursales";
 
 function AppRoutes() {
 
@@ -65,6 +66,17 @@ function AppRoutes() {
                         <PrivateRoute>
                             <MainLayout>
                                 <Servicios />
+                            </MainLayout>
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/sucursales"
+                    element={
+                        <PrivateRoute>
+                            <MainLayout>
+                                <Sucursales />
                             </MainLayout>
                         </PrivateRoute>
                     }

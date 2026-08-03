@@ -8,6 +8,7 @@ import FitnessCenterRoundedIcon from "@mui/icons-material/FitnessCenterRounded";
 import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
 import PaymentsRoundedIcon from "@mui/icons-material/PaymentsRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
+import BusinessRoundedIcon from "@mui/icons-material/BusinessRounded";
 
 export const adminMenu = [
   {
@@ -29,6 +30,12 @@ export const adminMenu = [
     text: "Fisioterapeutas",
     icon: <MedicalServicesRoundedIcon />,
     path: "/fisioterapeutas",
+  },
+
+  {
+    text: "Sucursales",
+    icon: <BusinessRoundedIcon />,
+    path: "/sucursales",
   },
   {
     text: "Citas",

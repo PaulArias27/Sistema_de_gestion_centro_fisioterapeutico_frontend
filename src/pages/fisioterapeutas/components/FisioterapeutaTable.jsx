@@ -1,7 +1,6 @@
 import {
   Chip,
   CircularProgress,
-  IconButton,
   Paper,
   Table,
   TableBody,
@@ -12,11 +11,7 @@ import {
   TablePagination,
 } from "@mui/material";
 
-import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
-import EditRoundedIcon from "@mui/icons-material/EditRounded";
-import BlockRoundedIcon from "@mui/icons-material/BlockRounded";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import Tooltip from "@mui/material/Tooltip";
+import TableActions from "../../../components/common/TableActions";
 
 function FisioterapeutaTable({
         fisioterapeutas,
@@ -150,53 +145,19 @@ function FisioterapeutaTable({
 
               <TableCell align="center">
 
-                <Tooltip title="Ver fisioterapeuta" arrow>
-                    <IconButton
-                        color="primary"
-                        sx={{ mx: 0.3 }}
-                        onClick={() => onVer(fisioterapeuta.id)}
-                    >
-                        <VisibilityRoundedIcon />
-                    </IconButton>
-                </Tooltip>
+                <TableActions
 
-                <Tooltip title="Editar fisioterapeuta" arrow>
-                    <IconButton
-                        color="warning"
-                        sx={{ mx: 0.3 }}
-                        onClick={() => onEditar(fisioterapeuta.id)}
-                    >
-                        <EditRoundedIcon />
-                    </IconButton>
-                </Tooltip>
+                    activo={fisioterapeuta.estado === "ACTIVO"}
 
-                {
-                    fisioterapeuta.estado === "ACTIVO" ? (
+                    onVer={() => onVer(fisioterapeuta.id)}
 
-                        <Tooltip title="Inactivar fisioterapeuta" arrow>
-                            <IconButton
-                                color="error"
-                                sx={{ mx: 0.3 }}
-                                onClick={() => onEliminar(fisioterapeuta)}
-                            >
-                                <BlockRoundedIcon />
-                            </IconButton>
-                        </Tooltip>
+                    onEditar={() => onEditar(fisioterapeuta.id)}
 
-                    ) : (
+                    onEliminar={() => onEliminar(fisioterapeuta)}
 
-                        <Tooltip title="Reactivar fisioterapeuta" arrow>
-                            <IconButton
-                                color="success"
-                                sx={{ mx: 0.3 }}
-                                onClick={() => onReactivar(fisioterapeuta)}
-                            >
-                                <CheckCircleRoundedIcon />
-                            </IconButton>
-                        </Tooltip>
+                    onReactivar={() => onReactivar(fisioterapeuta)}
 
-                    )
-                }
+                />
 
               </TableCell>
 

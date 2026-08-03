@@ -1,6 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Box} from "@mui/material";
 
-import PacienteToolbar from "./components/PacienteToolbar";
 import PacienteTable from "./components/PacienteTable";
 
 import { usePacientes } from "../../hooks/usePacientes";
@@ -9,6 +8,7 @@ import PacienteDialog from "./components/PacienteDialog";
 import PacienteForm from "./components/PacienteForm";
 import CustomSnackbar from "../../components/common/CustomSnackbar";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
+import PageTitle from "../../components/common/PageTitle";
 import {
     crearPaciente,
     actualizarPaciente,
@@ -18,6 +18,7 @@ import {
 } from "../../services/pacienteService";
 
 import PacienteDetailsDialog from "./components/PacienteDetailsDialog";
+import SearchToolbar from "../../components/common/SearchToolbar";
 
 function Pacientes() {
 
@@ -366,21 +367,26 @@ function Pacientes() {
 
         <Box>
 
-            <Typography
-                variant="h4"
-                fontWeight={700}
-                mb={3}
-            >
-                Pacientes
-            </Typography>
+            <PageTitle title="Pacientes" />
 
-            <PacienteToolbar
-                onNuevoPaciente={abrirNuevoPaciente}
+            <SearchToolbar
+
+                placeholder="Buscar paciente..."
+
+                buttonText="Nuevo Paciente"
+
                 busqueda={busqueda}
-                onBuscar={(texto) => {
+
+                onBuscar={(texto)=>{
+
                     setBusqueda(texto);
+
                     setPage(0);
+
                 }}
+
+                onNuevo={abrirNuevoPaciente}
+
             />
 
             <PacienteTable

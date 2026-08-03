@@ -1,7 +1,6 @@
 import {
-  Chip,
+
   CircularProgress,
-  IconButton,
   Paper,
   Table,
   TableBody,
@@ -12,11 +11,8 @@ import {
   TablePagination,
 } from "@mui/material";
 
-import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
-import EditRoundedIcon from "@mui/icons-material/EditRounded";
-import BlockRoundedIcon from "@mui/icons-material/BlockRounded";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import Tooltip from "@mui/material/Tooltip";
+import EstadoChip from "../../../components/common/EstadoChip";
+import TableActions from "../../../components/common/TableActions";
 
 function PacienteTable({
         pacientes,
@@ -106,70 +102,27 @@ function PacienteTable({
 
               <TableCell>
 
-                <Chip
-                    label={paciente.estado}
-                    size="small"
-                    sx={{
-                        fontWeight: 600,
-                        color: "#FFFFFF",
-                        bgcolor:
-                            paciente.estado === "ACTIVO"
-                                ? "#2E7D32"
-                                : "#757575",
-                    }}
+                <EstadoChip
+                    estado={paciente.estado}
                 />
 
               </TableCell>
 
               <TableCell align="center">
 
-                <Tooltip title="Ver paciente" arrow>
-                    <IconButton
-                        color="primary"
-                        sx={{ mx: 0.3 }}
-                        onClick={() => onVer(paciente.id)}
-                    >
-                        <VisibilityRoundedIcon />
-                    </IconButton>
-                </Tooltip>
+                <TableActions
 
-                <Tooltip title="Editar paciente" arrow>
-                    <IconButton
-                        color="warning"
-                        sx={{ mx: 0.3 }}
-                        onClick={() => onEditar(paciente.id)}
-                    >
-                        <EditRoundedIcon />
-                    </IconButton>
-                </Tooltip>
+                  activo={paciente.estado === "ACTIVO"}
 
-                {
-                    paciente.estado === "ACTIVO" ? (
+                  onVer={() => onVer(paciente.id)}
 
-                        <Tooltip title="Inactivar paciente" arrow>
-                            <IconButton
-                                color="error"
-                                sx={{ mx: 0.3 }}
-                                onClick={() => onEliminar(paciente)}
-                            >
-                                <BlockRoundedIcon />
-                            </IconButton>
-                        </Tooltip>
+                  onEditar={() => onEditar(paciente.id)}
 
-                    ) : (
+                  onEliminar={() => onEliminar(paciente)}
 
-                        <Tooltip title="Reactivar paciente" arrow>
-                            <IconButton
-                                color="success"
-                                sx={{ mx: 0.3 }}
-                                onClick={() => onReactivar(paciente)}
-                            >
-                                <CheckCircleRoundedIcon />
-                            </IconButton>
-                        </Tooltip>
+                  onReactivar={() => onReactivar(paciente)}
 
-                    )
-                }
+              />
 
               </TableCell>
 

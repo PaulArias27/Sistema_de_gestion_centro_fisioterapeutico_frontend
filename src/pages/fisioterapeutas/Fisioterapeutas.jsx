@@ -1,16 +1,17 @@
-import { Box, Typography } from "@mui/material";
+import { Box} from "@mui/material";
 import { useState } from "react";
 
 import { useFisioterapeutas } from "../../hooks/useFisioterapeutas";
 
-import FisioterapeutaToolbar from "./components/FisioterapeutaToolbar";
 import FisioterapeutaTable from "./components/FisioterapeutaTable";
 import FisioterapeutaDialog from "./components/FisioterapeutaDialog";
 import FisioterapeutaForm from "./components/FisioterapeutaForm";
 import FisioterapeutaDetailsDialog from "./components/FisioterapeutaDetailsDialog";
+import PageTitle from "../../components/common/PageTitle";
 
 import CustomSnackbar from "../../components/common/CustomSnackbar";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
+import SearchToolbar from "../../components/common/SearchToolbar";
 
 import {
     crearFisioterapeuta,
@@ -520,24 +521,26 @@ function Fisioterapeutas() {
 
         <Box>
 
-            <Typography
-                variant="h4"
-                fontWeight={700}
-                mb={3}
-            >
-                Fisioterapeutas
-            </Typography>
+            <PageTitle title="Fisioterapeutas" />
 
-            <FisioterapeutaToolbar
-                onNuevoFisioterapeuta={abrirNuevoFisioterapeuta}
+            <SearchToolbar
+
+                placeholder="Buscar fisioterapeuta..."
+
+                buttonText="Nuevo Fisioterapeuta"
+
                 busqueda={busqueda}
-                onBuscar={(texto) => {
+
+                onBuscar={(texto)=>{
 
                     setBusqueda(texto);
 
                     setPage(0);
 
                 }}
+
+                onNuevo={abrirNuevoFisioterapeuta}
+
             />
 
             <FisioterapeutaTable

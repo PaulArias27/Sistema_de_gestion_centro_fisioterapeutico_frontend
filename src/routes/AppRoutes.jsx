@@ -7,6 +7,7 @@ import MainLayout from "../components/layout/MainLayout";
 import PrivateRoute from "./PrivateRoute";
 import Pacientes from "../pages/pacientes/Pacientes";
 import Fisioterapeutas from "../pages/fisioterapeutas/Fisioterapeutas";
+import Servicios from "../pages/servicios/Servicios";
 
 function AppRoutes() {
 
@@ -54,6 +55,16 @@ function AppRoutes() {
                         <PrivateRoute>
                             <MainLayout>
                                 <Fisioterapeutas />
+                            </MainLayout>
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/servicios"
+                    element={
+                        <PrivateRoute>
+                            <MainLayout>
+                                <Servicios />
                             </MainLayout>
                         </PrivateRoute>
                     }

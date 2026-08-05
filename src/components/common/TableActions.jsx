@@ -17,6 +17,8 @@ function TableActions({
 
     onReactivar,
 
+    mostrarReactivar = true,
+
 }) {
 
     return (
@@ -24,7 +26,6 @@ function TableActions({
         <>
 
             <Tooltip title="Ver" arrow>
-
                 <IconButton
                     color="primary"
                     sx={{ mx: 0.3 }}
@@ -32,11 +33,9 @@ function TableActions({
                 >
                     <VisibilityRoundedIcon />
                 </IconButton>
-
             </Tooltip>
 
             <Tooltip title="Editar" arrow>
-
                 <IconButton
                     color="warning"
                     sx={{ mx: 0.3 }}
@@ -44,13 +43,11 @@ function TableActions({
                 >
                     <EditRoundedIcon />
                 </IconButton>
-
             </Tooltip>
 
             {activo ? (
 
                 <Tooltip title="Inactivar" arrow>
-
                     <IconButton
                         color="error"
                         sx={{ mx: 0.3 }}
@@ -58,22 +55,23 @@ function TableActions({
                     >
                         <BlockRoundedIcon />
                     </IconButton>
-
                 </Tooltip>
 
             ) : (
 
-                <Tooltip title="Reactivar" arrow>
+                mostrarReactivar && (
 
-                    <IconButton
-                        color="success"
-                        sx={{ mx: 0.3 }}
-                        onClick={onReactivar}
-                    >
-                        <CheckCircleRoundedIcon />
-                    </IconButton>
+                    <Tooltip title="Reactivar" arrow>
+                        <IconButton
+                            color="success"
+                            sx={{ mx: 0.3 }}
+                            onClick={onReactivar}
+                        >
+                            <CheckCircleRoundedIcon />
+                        </IconButton>
+                    </Tooltip>
 
-                </Tooltip>
+                )
 
             )}
 

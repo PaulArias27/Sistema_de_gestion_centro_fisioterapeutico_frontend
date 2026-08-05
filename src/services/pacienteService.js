@@ -16,3 +16,6 @@ export const inactivarPaciente = (id) =>
 
 export const reactivarPaciente = (id) =>
     pacienteApi.reactivarPaciente(id);
+
+export const obtenerPacientesActivos = () =>
+    pacienteApi.getPacientesActivos();

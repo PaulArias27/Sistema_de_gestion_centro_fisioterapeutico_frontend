@@ -49,3 +49,11 @@ export async function reactivarServicio(id) {
     return response.data;
 
 }
+
+export async function getServiciosActivos() {
+
+    const response = await axiosClient.get("/servicios/activos");
+
+    return response.data.data;
+
+}

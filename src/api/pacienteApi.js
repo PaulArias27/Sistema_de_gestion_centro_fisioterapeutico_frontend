@@ -49,3 +49,11 @@ export async function reactivarPaciente(id) {
     return response.data;
 
 }
+
+export async function getPacientesActivos() {
+
+    const response = await axiosClient.get("/pacientes/activos");
+
+    return response.data.data;
+
+}

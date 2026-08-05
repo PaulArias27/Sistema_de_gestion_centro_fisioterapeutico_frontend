@@ -17,3 +17,6 @@ export const inactivarServicio = (id) =>
 
 export const reactivarServicio = (id) =>
     servicioApi.reactivarServicio(id);
+
+export const obtenerServiciosActivos = () =>
+    servicioApi.getServiciosActivos();

@@ -17,3 +17,6 @@ export const inactivarFisioterapeuta = (id) =>
 
 export const reactivarFisioterapeuta = (id) =>
     fisioterapeutaApi.reactivarFisioterapeuta(id);
+
+export const obtenerFisioterapeutasActivos = () =>
+    fisioterapeutaApi.getFisioterapeutasActivos();

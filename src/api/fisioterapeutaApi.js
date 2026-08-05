@@ -57,3 +57,11 @@ export async function reactivarFisioterapeuta(id) {
     return response.data;
 
 }
+
+export async function getFisioterapeutasActivos() {
+
+    const response = await axiosClient.get("/fisioterapeutas/activos");
+
+    return response.data.data;
+
+}

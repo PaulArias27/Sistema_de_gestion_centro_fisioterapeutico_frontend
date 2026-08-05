@@ -6,9 +6,10 @@ import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import HealingRoundedIcon from "@mui/icons-material/HealingRounded";
 import FitnessCenterRoundedIcon from "@mui/icons-material/FitnessCenterRounded";
 import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
-import PaymentsRoundedIcon from "@mui/icons-material/PaymentsRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import BusinessRoundedIcon from "@mui/icons-material/BusinessRounded";
+import PointOfSaleRoundedIcon
+from "@mui/icons-material/PointOfSaleRounded";
 
 export const adminMenu = [
   {
@@ -64,7 +65,7 @@ export const adminMenu = [
   },
   {
     text: "Ventas",
-    icon: <PaymentsRoundedIcon />,
+    icon: <PointOfSaleRoundedIcon />,
     path: "/ventas",
   },
   {

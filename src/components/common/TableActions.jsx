@@ -1,4 +1,4 @@
-import { IconButton, Tooltip } from "@mui/material";
+import {Box, IconButton, Tooltip } from "@mui/material";
 
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
@@ -23,61 +23,65 @@ function TableActions({
 
     return (
 
-        <>
+    <Box
+        sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 0.5,
+            flexWrap: "nowrap",
+        }}
+    >
 
-            <Tooltip title="Ver" arrow>
+        <Tooltip title="Ver" arrow>
+            <IconButton
+                color="primary"
+                onClick={onVer}
+            >
+                <VisibilityRoundedIcon />
+            </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Editar" arrow>
+            <IconButton
+                color="warning"
+                onClick={onEditar}
+            >
+                <EditRoundedIcon />
+            </IconButton>
+        </Tooltip>
+
+        {activo ? (
+
+            <Tooltip title="Inactivar" arrow>
                 <IconButton
-                    color="primary"
-                    sx={{ mx: 0.3 }}
-                    onClick={onVer}
+                    color="error"
+                    onClick={onEliminar}
                 >
-                    <VisibilityRoundedIcon />
+                    <BlockRoundedIcon />
                 </IconButton>
             </Tooltip>
 
-            <Tooltip title="Editar" arrow>
-                <IconButton
-                    color="warning"
-                    sx={{ mx: 0.3 }}
-                    onClick={onEditar}
-                >
-                    <EditRoundedIcon />
-                </IconButton>
-            </Tooltip>
+        ) : (
 
-            {activo ? (
+            mostrarReactivar && (
 
-                <Tooltip title="Inactivar" arrow>
+                <Tooltip title="Reactivar" arrow>
                     <IconButton
-                        color="error"
-                        sx={{ mx: 0.3 }}
-                        onClick={onEliminar}
+                        color="success"
+                        onClick={onReactivar}
                     >
-                        <BlockRoundedIcon />
+                        <CheckCircleRoundedIcon />
                     </IconButton>
                 </Tooltip>
 
-            ) : (
+            )
 
-                mostrarReactivar && (
+        )}
 
-                    <Tooltip title="Reactivar" arrow>
-                        <IconButton
-                            color="success"
-                            sx={{ mx: 0.3 }}
-                            onClick={onReactivar}
-                        >
-                            <CheckCircleRoundedIcon />
-                        </IconButton>
-                    </Tooltip>
+    </Box>
 
-                )
-
-            )}
-
-        </>
-
-    );
+);
 
 }
 

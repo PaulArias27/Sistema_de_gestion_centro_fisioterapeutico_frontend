@@ -10,6 +10,7 @@ import Fisioterapeutas from "../pages/fisioterapeutas/Fisioterapeutas";
 import Servicios from "../pages/servicios/Servicios";
 import Sucursales from "../pages/sucursales/Sucursales";
 import Ventas from "../pages/ventas/Ventas";
+import Citas from "../pages/citas/Citas";
 
 function AppRoutes() {
 
@@ -89,6 +90,17 @@ function AppRoutes() {
                         <PrivateRoute>
                             <MainLayout>
                                 <Ventas />
+                            </MainLayout>
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/citas"
+                    element={
+                        <PrivateRoute>
+                            <MainLayout>
+                                <Citas />
                             </MainLayout>
                         </PrivateRoute>
                     }

@@ -29,12 +29,26 @@ export async function createUsuario(data) {
 
 export async function updateUsuario(id, data) {
 
-    const response = await axiosClient.put(
-        `/usuarios/${id}`,
-        data
-    );
+    try {
 
-    return response.data.data;
+        const response = await axiosClient.put(
+            `/usuarios/${id}`,
+            data
+        );
+
+        return response.data.data;
+
+    } catch (error) {
+
+        console.log("Status:", error.response?.status);
+
+        console.log("Body:", error.response?.data);
+
+        console.log("Errores:", error.response?.data?.data);
+
+        throw error;
+
+    }
 
 }
 

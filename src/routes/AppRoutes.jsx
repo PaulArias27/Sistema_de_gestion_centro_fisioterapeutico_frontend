@@ -14,6 +14,7 @@ import Citas from "../pages/citas/Citas";
 import Sesiones from "../pages/sesiones/Sesiones";
 import Tratamientos from "../pages/tratamientos/Tratamientos";
 import Evaluaciones from "../pages/evaluaciones/Evaluaciones";
+import Usuarios from "../pages/usuarios/Usuarios";
 
 function AppRoutes() {
 
@@ -137,6 +138,17 @@ function AppRoutes() {
                         <PrivateRoute>
                             <MainLayout>
                                 <Sesiones />
+                            </MainLayout>
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/usuarios"
+                    element={
+                        <PrivateRoute>
+                            <MainLayout>
+                                <Usuarios />
                             </MainLayout>
                         </PrivateRoute>
                     }

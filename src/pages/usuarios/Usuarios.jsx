@@ -2,15 +2,12 @@ import { useMemo, useState } from "react";
 
 import {
     Alert,
-    Box,
-    Button,
-    Paper,
     Snackbar,
-    TextField,
-    Typography,
 } from "@mui/material";
 
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
+
+import PageTitle from "../../components/common/PageTitle";
+import SearchToolbar from "../../components/common/SearchToolbar";
 
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 
@@ -273,7 +270,7 @@ function Usuarios() {
     };
 
     const guardar = async () => {
-
+        
         if (!validarFormulario()) return;
 
         try {
@@ -519,3 +516,200 @@ function Usuarios() {
         setAccionPendiente("");
 
     };
+
+    return (
+
+         <>
+            <PageTitle
+
+                title="Usuarios"
+
+                subtitle="Gestión de usuarios"
+
+            />
+
+            <SearchToolbar
+
+                placeholder="Buscar usuario..."
+
+                busqueda={busqueda}
+
+                onBuscar={setBusqueda}
+
+                buttonText="Nuevo Usuario"
+
+                onNuevo={nuevoUsuario}
+
+            />
+
+
+            <UsuarioTable
+
+                usuarios={usuariosFiltrados}
+
+                loading={loading}
+
+                page={page}
+
+                rowsPerPage={rowsPerPage}
+
+                onPageChange={setPage}
+
+                onRowsPerPageChange={setRowsPerPage}
+
+                onVer={verUsuario}
+
+                onEditar={editarUsuario}
+
+                onActivar={activar}
+
+                onDesactivar={desactivar}
+
+                onPassword={abrirPassword}
+
+            />
+
+
+        <UsuarioDialog
+
+            open={openDialog}
+
+            onClose={() => setOpenDialog(false)}
+
+            onGuardar={guardar}
+
+            formData={formData}
+
+            onChange={handleChange}
+
+            errores={errores}
+
+            editando={editando}
+
+        />
+
+        <UsuarioDetailsDialog
+
+            open={openDetails}
+
+            onClose={() => setOpenDetails(false)}
+
+            usuario={usuarioSeleccionado}
+
+            onEditar={() => {
+
+                setOpenDetails(false);
+
+                editarUsuario(usuarioSeleccionado.id);
+
+            }}
+
+            onPassword={() => {
+
+                setOpenDetails(false);
+
+                abrirPassword(usuarioSeleccionado);
+
+            }}
+
+            onActivar={() => {
+
+                setOpenDetails(false);
+
+                activar(usuarioSeleccionado);
+
+            }}
+
+            onDesactivar={() => {
+
+                setOpenDetails(false);
+
+                desactivar(usuarioSeleccionado);
+
+            }}
+
+        />
+
+        <PasswordDialog
+
+            open={openPassword}
+
+            onClose={() => setOpenPassword(false)}
+
+            onGuardar={guardarPassword}
+
+            formData={passwordData}
+
+            onChange={handlePasswordChange}
+
+            errores={errores}
+
+        />
+
+        <ConfirmDialog
+
+            open={openConfirm}
+
+            onClose={() => setOpenConfirm(false)}
+
+            onConfirm={confirmarAccion}
+
+            title="Confirmar acción"
+
+            message={`¿Está seguro de ${accionPendiente} este usuario?`}
+
+        />
+
+        <Snackbar
+
+            open={snackbar.open}
+
+            autoHideDuration={4000}
+
+            onClose={() =>
+
+                setSnackbar((prev) => ({
+
+                    ...prev,
+
+                    open: false,
+
+                }))
+
+            }
+
+        >
+
+            <Alert
+
+                severity={snackbar.severity}
+
+                variant="filled"
+
+                onClose={() =>
+
+                    setSnackbar((prev) => ({
+
+                        ...prev,
+
+                        open: false,
+
+                    }))
+
+                }
+
+            >
+
+                {snackbar.message}
+
+            </Alert>
+
+        </Snackbar>
+
+    </>
+
+);
+
+}
+
+export default Usuarios;

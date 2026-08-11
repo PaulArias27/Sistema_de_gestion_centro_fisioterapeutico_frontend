@@ -84,11 +84,6 @@ function UsuarioForm({
 
                     </MenuItem>
 
-                    <MenuItem value="RECEPCIONISTA">
-
-                        Recepcionista
-
-                    </MenuItem>
 
                 </TextField>
 

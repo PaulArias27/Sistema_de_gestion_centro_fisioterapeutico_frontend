@@ -366,15 +366,25 @@ function Citas() {
 
                 console.error(error);
 
-                mostrarSnackbar(
+                const response = error.response?.data;
 
-                    error.response?.data?.message ||
+                let mensaje = response?.message || "Ocurrió un error.";
 
-                    "No se pudo guardar la cita.",
+                if (response?.data) {
 
-                    "error"
+                    mensaje = Object.values(response.data).join("\n");
 
-                );
+                }
+
+                setSnackbar({
+
+                    open: true,
+
+                    severity: "error",
+
+                    message: mensaje,
+
+                });
 
             }
 

@@ -4,6 +4,7 @@ import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import BlockRoundedIcon from "@mui/icons-material/BlockRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import LockResetRoundedIcon from "@mui/icons-material/LockResetRounded";
 
 function TableActions({
 
@@ -16,6 +17,10 @@ function TableActions({
     onEliminar,
 
     onReactivar,
+
+    onPassword,
+
+    mostrarPassword = false,
 
     mostrarReactivar = true,
 
@@ -50,6 +55,23 @@ function TableActions({
                 <EditRoundedIcon />
             </IconButton>
         </Tooltip>
+
+        {mostrarPassword && (
+
+            <Tooltip title="Cambiar contraseña" arrow>
+
+                <IconButton
+                    color="secondary"
+                    onClick={onPassword}
+                >
+
+                    <LockResetRoundedIcon />
+
+                </IconButton>
+
+            </Tooltip>
+
+        )}
 
         {activo ? (
 

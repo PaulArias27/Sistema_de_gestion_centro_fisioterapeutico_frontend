@@ -8,6 +8,7 @@ import FitnessCenterRoundedIcon from "@mui/icons-material/FitnessCenterRounded";
 import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import BusinessRoundedIcon from "@mui/icons-material/BusinessRounded";
+import AssignmentTurnedInRoundedIcon from "@mui/icons-material/AssignmentTurnedInRounded";
 import PointOfSaleRoundedIcon
 from "@mui/icons-material/PointOfSaleRounded";
 
@@ -55,7 +56,7 @@ export const adminMenu = [
   },
   {
     text: "Sesiones",
-    icon: <FitnessCenterRoundedIcon />,   
+    icon: <AssignmentTurnedInRoundedIcon />,
     path: "/sesiones",
   },
   {

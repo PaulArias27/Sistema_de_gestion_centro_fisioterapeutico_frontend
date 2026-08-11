@@ -29,13 +29,24 @@ export async function createCita(data) {
 
 export async function updateCita(id, data) {
 
-    const response =
-        await axiosClient.put(
-            `/citas/${id}`,
-            data
-        );
+    console.log("Actualizando cita:", data);
 
-    return response.data.data;
+    try {
+
+        const response = await axiosClient.put(`/citas/${id}`, data);
+
+        return response.data.data;
+
+    } catch (error) {
+
+        console.log("Status:", error.response?.status);
+        console.log("Body:", error.response?.data);
+        console.log("Errores:", error.response?.data?.data);
+        console.table(error.response?.data?.data);
+
+        throw error;
+
+    }
 
 }
 

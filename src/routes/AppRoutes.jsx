@@ -11,6 +11,9 @@ import Servicios from "../pages/servicios/Servicios";
 import Sucursales from "../pages/sucursales/Sucursales";
 import Ventas from "../pages/ventas/Ventas";
 import Citas from "../pages/citas/Citas";
+import Sesiones from "../pages/sesiones/Sesiones";
+import Tratamientos from "../pages/tratamientos/Tratamientos";
+import Evaluaciones from "../pages/evaluaciones/Evaluaciones";
 
 function AppRoutes() {
 
@@ -85,6 +88,28 @@ function AppRoutes() {
                 />
 
                 <Route
+                    path="/tratamientos"
+                    element={
+                        <PrivateRoute>
+                            <MainLayout>
+                                <Tratamientos />
+                            </MainLayout>
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/evaluaciones"
+                    element={
+                        <PrivateRoute>
+                            <MainLayout>
+                                <Evaluaciones />
+                            </MainLayout>
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
                     path="/ventas"
                     element={
                         <PrivateRoute>
@@ -101,6 +126,17 @@ function AppRoutes() {
                         <PrivateRoute>
                             <MainLayout>
                                 <Citas />
+                            </MainLayout>
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/sesiones"
+                    element={
+                        <PrivateRoute>
+                            <MainLayout>
+                                <Sesiones />
                             </MainLayout>
                         </PrivateRoute>
                     }

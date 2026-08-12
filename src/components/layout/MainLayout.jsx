@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Box } from "@mui/material";
 
 import Sidebar from "./Sidebar";
@@ -7,16 +8,24 @@ import Footer from "./Footer";
 import { drawerWidth } from "../../config/layout";
 
 function MainLayout({ children }) {
+
+
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
+
   return (
     <Box sx={{ display: "flex", minHeight: "100vh" }}>
 
-      <Sidebar />
+      <Sidebar
+          open={sidebarOpen}
+      />
 
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          width: `calc(100% - ${drawerWidth}px)`,
+          width: `calc(100% - ${sidebarOpen ? drawerWidth : 72}px)`,
+          transition: "width .25s ease",
           display: "flex",
           flexDirection: "column",
           minWidth: 0,
@@ -24,7 +33,10 @@ function MainLayout({ children }) {
         }}
       >
 
-        <Topbar />
+        <Topbar
+            sidebarOpen={sidebarOpen}
+            setSidebarOpen={setSidebarOpen}
+        />
 
         <Box
           sx={{

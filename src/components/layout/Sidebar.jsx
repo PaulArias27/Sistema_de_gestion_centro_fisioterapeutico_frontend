@@ -21,7 +21,8 @@ import { useAuth } from "../../hooks/useAuth";
 import { logout as logoutService } from "../../services/authService";
 
 
-function Sidebar() {
+function Sidebar({ open }) {
+
   const { usuario, logout } = useAuth();
   const menuItems =
     usuario?.rol === "ADMIN"
@@ -55,24 +56,27 @@ function Sidebar() {
   return (
     <Box
       sx={{
-        width: 250,
+        width: open ? 250 : 72,
+        transition: "width .25s ease",
+        overflow: "hidden",
         height: "100vh",
         bgcolor: "#121212",
         color: "#ffffff",
         display: "flex",
         flexDirection: "column",
-        p: 3,
+        p: open ? 3 : 1.5,
       }}
     >
       {/* Logo */}
       <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: 2,
-          py: 2,
-          mb: 2,
-        }}
+          sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: open ? "flex-start" : "center",
+              gap: open ? 2 : 0,
+              py: 2,
+              mb: 2,
+          }}
       >
         <img
           src={logo}
@@ -84,29 +88,35 @@ function Sidebar() {
           }}
         />
 
-        <Box>
-          <Typography
-            sx={{
-              color: "#FFFFFF",
-              fontWeight: 700,
-              fontSize: "1.1rem",
-              lineHeight: 1.2,
-            }}
-          >
-            Kinesio
-          </Typography>
+        {open && (
 
-          <Typography
-            sx={{
-              color: "#FFFFFF",
-              fontWeight: 500,
-              fontSize: "1rem",
-              lineHeight: 1.2,
-            }}
-          >
-            Vitality
-          </Typography>
-        </Box>
+            <Box>
+
+                <Typography
+                    sx={{
+                        color: "#FFFFFF",
+                        fontWeight: 700,
+                        fontSize: "1.1rem",
+                        lineHeight: 1.2,
+                    }}
+                >
+                    Kinesio
+                </Typography>
+
+                <Typography
+                    sx={{
+                        color: "#FFFFFF",
+                        fontWeight: 500,
+                        fontSize: "1rem",
+                        lineHeight: 1.2,
+                    }}
+                >
+                    Vitality
+                </Typography>
+
+            </Box>
+
+        )}
       </Box>
 
       <Divider
@@ -151,6 +161,7 @@ function Sidebar() {
                       sx={{
                           borderRadius: 2,
                           mb: 1,
+                          justifyContent: open ? "initial" : "center",
 
                           "&.Mui-selected": {
                               bgcolor: "#F57C00",
@@ -172,22 +183,29 @@ function Sidebar() {
                                   location.pathname === item.path
                                       ? "#FFFFFF"
                                       : "#BDBDBD",
-                              minWidth: 40,
+
+                              minWidth: open ? 40 : 0,
+
+                              justifyContent: "center",
                           }}
                       >
                           {item.icon}
                       </ListItemIcon>
 
-                      <ListItemText
-                          primary={item.text}
-                          primaryTypographyProps={{
-                              sx: {
-                                  color: "#FFFFFF",
-                                  fontSize: 15,
-                                  fontWeight: 500,
-                              },
-                          }}
-                      />
+                      {open && (
+
+                        <ListItemText
+                            primary={item.text}
+                            primaryTypographyProps={{
+                                sx: {
+                                    color: "#FFFFFF",
+                                    fontSize: 15,
+                                    fontWeight: 500,
+                                },
+                            }}
+                        />
+
+                    )}
 
                   </ListItemButton>
 

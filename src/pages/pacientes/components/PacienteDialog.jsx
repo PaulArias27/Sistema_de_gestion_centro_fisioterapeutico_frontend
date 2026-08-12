@@ -21,12 +21,14 @@ function PacienteDialog({
           fullWidth
           maxWidth="md"
           scroll="paper"
-          PaperProps={{
-              sx: {
-                  borderRadius: 4,
+          slotProps={{
+        paper: {
+            sx: {
+                borderRadius: 4,
                   width: "95%",
                   maxHeight: "90vh",
               },
+            }
           }}
       >
       <DialogTitle

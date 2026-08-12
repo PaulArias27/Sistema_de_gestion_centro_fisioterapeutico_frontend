@@ -15,6 +15,7 @@ import Sesiones from "../pages/sesiones/Sesiones";
 import Tratamientos from "../pages/tratamientos/Tratamientos";
 import Evaluaciones from "../pages/evaluaciones/Evaluaciones";
 import Usuarios from "../pages/usuarios/Usuarios";
+import Configuraciones from "../pages/configuraciones/Configuraciones";
 
 function AppRoutes() {
 
@@ -149,6 +150,17 @@ function AppRoutes() {
                         <PrivateRoute>
                             <MainLayout>
                                 <Usuarios />
+                            </MainLayout>
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/configuraciones"
+                    element={
+                        <PrivateRoute>
+                            <MainLayout>
+                                <Configuraciones />
                             </MainLayout>
                         </PrivateRoute>
                     }

@@ -13,98 +13,145 @@ import PointOfSaleRoundedIcon
 from "@mui/icons-material/PointOfSaleRounded";
 
 export const adminMenu = [
-  {
-    text: "Dashboard",
-    icon: <DashboardRoundedIcon />,
-    path: "/dashboard",
-  },
-  {
-    text: "Usuarios",
-    icon: <PeopleRoundedIcon />,
-    path: "/usuarios",
-  },
-  {
-    text: "Pacientes",
-    icon: <PeopleRoundedIcon />,
-    path: "/pacientes",
-  },
-  {
-    text: "Fisioterapeutas",
-    icon: <MedicalServicesRoundedIcon />,
-    path: "/fisioterapeutas",
-  },
 
-  {
-    text: "Sucursales",
-    icon: <BusinessRoundedIcon />,
-    path: "/sucursales",
-  },
-  {
-    text: "Citas",
-    icon: <CalendarMonthRoundedIcon />,
-    path: "/citas",
-  },
-  {
-    text: "Evaluaciones",
-    icon: <AssignmentRoundedIcon />,
-    path: "/evaluaciones",
-  },
-  {
-    text: "Tratamientos",
-    icon: <HealingRoundedIcon />,
-    path: "/tratamientos",
-  },
-  {
-    text: "Sesiones",
-    icon: <AssignmentTurnedInRoundedIcon />,
-    path: "/sesiones",
-  },
-  {
-    text: "Servicios",
-    icon: <BuildRoundedIcon />,
-    path: "/servicios",
-  },
-  {
-    text: "Ventas",
-    icon: <PointOfSaleRoundedIcon />,
-    path: "/ventas",
-  },
-  {
-    text: "Configuración",
-    icon: <SettingsRoundedIcon />,
-    path: "/configuracion",
-  },
+    {
+        text: "Dashboard",
+        icon: <DashboardRoundedIcon />,
+        path: "/dashboard",
+    },
+
+    {
+        divider: true,
+    },
+
+    {
+        text: "Pacientes",
+        icon: <PeopleRoundedIcon />,
+        path: "/pacientes",
+    },
+
+    {
+        text: "Fisioterapeutas",
+        icon: <MedicalServicesRoundedIcon />,
+        path: "/fisioterapeutas",
+    },
+
+    {
+        divider: true,
+    },
+
+    {
+        text: "Citas",
+        icon: <CalendarMonthRoundedIcon />,
+        path: "/citas",
+    },
+
+    {
+        text: "Evaluaciones",
+        icon: <AssignmentRoundedIcon />,
+        path: "/evaluaciones",
+    },
+
+    {
+        text: "Tratamientos",
+        icon: <HealingRoundedIcon />,
+        path: "/tratamientos",
+    },
+
+    {
+        text: "Sesiones",
+        icon: <AssignmentTurnedInRoundedIcon />,
+        path: "/sesiones",
+    },
+
+    {
+        divider: true,
+    },
+
+    {
+        text: "Ventas",
+        icon: <PointOfSaleRoundedIcon />,
+        path: "/ventas",
+    },
+
+    {
+        divider: true,
+    },
+
+    {
+        text: "Servicios",
+        icon: <BuildRoundedIcon />,
+        path: "/servicios",
+    },
+
+    {
+        text: "Sucursales",
+        icon: <BusinessRoundedIcon />,
+        path: "/sucursales",
+    },
+
+    {
+        divider: true,
+    },
+
+    {
+        text: "Usuarios",
+        icon: <PeopleRoundedIcon />,
+        path: "/usuarios",
+    },
+
+    {
+        text: "Configuraciones",
+        icon: <SettingsRoundedIcon />,
+        path: "/configuraciones",
+    },
+
 ];
 
 export const fisioterapeutaMenu = [
-  {
-    text: "Dashboard",
-    icon: <DashboardRoundedIcon />,
-    path: "/dashboard",
-  },
-  {
-    text: "Pacientes",
-    icon: <PeopleRoundedIcon />,
-    path: "/pacientes",
-  },
-  {
-    text: "Citas",
-    icon: <CalendarMonthRoundedIcon />,
-    path: "/citas",
-  },
-  {
-    text: "Evaluaciones",
-    icon: <AssignmentRoundedIcon />,
-    path: "/evaluaciones",
-  },
-  {
-    text: "Tratamientos",
-    icon: <HealingRoundedIcon />,
-    path: "/tratamientos",
-  },
-  {
-    text: "Sesiones",
-    icon: <FitnessCenterRoundedIcon />,
-    path: "/sesiones",
-  },
+
+    {
+        text: "Dashboard",
+        icon: <DashboardRoundedIcon />,
+        path: "/dashboard",
+    },
+
+    {
+        divider: true,
+    },
+
+    {
+        text: "Pacientes",
+        icon: <PeopleRoundedIcon />,
+        path: "/pacientes",
+    },
+
+    {
+        divider: true,
+    },
+
+    {
+        text: "Citas",
+        icon: <CalendarMonthRoundedIcon />,
+        path: "/citas",
+    },
+
+    {
+        text: "Evaluaciones",
+        icon: <AssignmentRoundedIcon />,
+        path: "/evaluaciones",
+    },
+
+    {
+        text: "Tratamientos",
+        icon: <HealingRoundedIcon />,
+        path: "/tratamientos",
+    },
+
+    {
+        text: "Sesiones",
+        icon: <FitnessCenterRoundedIcon />,
+        path: "/sesiones",
+    },
+
 ];

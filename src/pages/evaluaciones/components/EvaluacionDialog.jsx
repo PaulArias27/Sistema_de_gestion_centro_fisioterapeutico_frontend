@@ -21,7 +21,10 @@ function EvaluacionDialog({
 }) {
     return (
         <Dialog open={open} onClose={onClose} fullWidth maxWidth="lg" scroll="paper"
-            PaperProps={{ sx: { borderRadius: 4, width: "95%", maxHeight: "90vh" } }}>
+            slotProps={{
+        paper: {
+            sx: {
+                borderRadius: 4, width: "95%", maxHeight: "90vh" } } }}>
             <DialogTitle sx={{ fontWeight: 700 }}>
                 {editando ? "Editar evaluación" : "Nueva evaluación"}
             </DialogTitle>

@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Button,
   Divider,
@@ -28,22 +27,6 @@ function Sidebar() {
     usuario?.rol === "ADMIN"
         ? adminMenu
         : fisioterapeutaMenu;
-  const getInitials = (name) => {
-
-    if (!name) return "U";
-
-    const words = name.trim().split(" ");
-
-    if (words.length === 1) {
-        return words[0][0].toUpperCase();
-    }
-
-    return (
-        words[0][0] +
-        words[1][0]
-    ).toUpperCase();
-
-};
 
   
   const navigate = useNavigate();
@@ -133,52 +116,6 @@ function Sidebar() {
         }}
       />
 
-      {/* Usuario */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          mb: 3,
-        }}
-      >
-        <Avatar
-          sx={{
-            bgcolor: "#F57C00",
-            width: 48,
-            height: 48,
-            fontWeight: "bold",
-          }}
-        >
-          {getInitials(usuario?.username)}
-        </Avatar>
-
-        <Box ml={2}>
-          <Typography
-            sx={{
-              fontWeight: 600,
-            }}
-          >
-            {usuario?.username}
-          </Typography>
-
-          <Typography
-            variant="body2"
-            sx={{
-              color: "#BDBDBD",
-              textTransform: "capitalize",
-            }}
-          >
-            {usuario?.rol}
-          </Typography>
-        </Box>
-      </Box>
-
-      <Divider
-        sx={{
-          borderColor: "#2f2f2f",
-          mb: 2,
-        }}
-      />
 
       {/* Menú */}
       <List
@@ -187,52 +124,76 @@ function Sidebar() {
             overflowY: "auto",
           }}
         >
-          {menuItems.map((item) => (
-            <ListItemButton
-              key={item.text}
-              onClick={() => navigate(item.path)}
-              selected={location.pathname === item.path}
-              sx={{
-                borderRadius: 2,
-                mb: 1,
+          {menuItems.map((item, index) => {
 
-                "&.Mui-selected": {
-                  bgcolor: "#F57C00",
-                },
+              if (item.divider) {
 
-                "&.Mui-selected:hover": {
-                  bgcolor: "#E65100",
-                },
+                  return (
 
-                "&:hover": {
-                  bgcolor: "#2A2A2A",
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  color:
-                    location.pathname === item.path
-                      ? "#FFFFFF"
-                      : "#BDBDBD",
-                  minWidth: 40,
-                }}
-              >
-                {item.icon}
-              </ListItemIcon>
+                      <Divider
+                          key={`divider-${index}`}
+                          sx={{
+                              borderColor: "#2f2f2f",
+                              my: 1.5,
+                          }}
+                      />
 
-              <ListItemText
-                primary={item.text}
-                primaryTypographyProps={{
-                  sx: {
-                    color: "#FFFFFF",
-                    fontSize: 15,
-                    fontWeight: 500,
-                  },
-                }}
-              />
-            </ListItemButton>
-          ))}
+                  );
+
+              }
+
+              return (
+
+                  <ListItemButton
+                      key={item.text}
+                      onClick={() => navigate(item.path)}
+                      selected={location.pathname === item.path}
+                      sx={{
+                          borderRadius: 2,
+                          mb: 1,
+
+                          "&.Mui-selected": {
+                              bgcolor: "#F57C00",
+                          },
+
+                          "&.Mui-selected:hover": {
+                              bgcolor: "#E65100",
+                          },
+
+                          "&:hover": {
+                              bgcolor: "#2A2A2A",
+                          },
+                      }}
+                  >
+
+                      <ListItemIcon
+                          sx={{
+                              color:
+                                  location.pathname === item.path
+                                      ? "#FFFFFF"
+                                      : "#BDBDBD",
+                              minWidth: 40,
+                          }}
+                      >
+                          {item.icon}
+                      </ListItemIcon>
+
+                      <ListItemText
+                          primary={item.text}
+                          primaryTypographyProps={{
+                              sx: {
+                                  color: "#FFFFFF",
+                                  fontSize: 15,
+                                  fontWeight: 500,
+                              },
+                          }}
+                      />
+
+                  </ListItemButton>
+
+              );
+
+          })}
         </List>
 
       <Divider

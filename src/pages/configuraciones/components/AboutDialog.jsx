@@ -57,7 +57,7 @@ function AboutDialog({
 
                     <Typography>
 
-                        <strong>Desarrollador:</strong> Byron Paul Arias Vicuña
+                        <strong>Desarrollador:</strong> Paul Arias 
 
                     </Typography>
 

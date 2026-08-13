@@ -14,44 +14,38 @@ function FormaPagoChip({ formaPago }) {
             color: "info",
         },
 
-        TARJETA: {
-            label: "Tarjeta",
+        TARJETA_DEBITO: {
+            label: "Tarjeta de débito",
             color: "secondary",
         },
 
-        DEPOSITO: {
-            label: "Depósito",
-            color: "warning",
+        TARJETA_CREDITO: {
+            label: "Tarjeta de crédito",
+            color: "primary",
         },
 
-        BILLETERA_MOVIL: {
-            label: "Billetera móvil",
-            color: "primary",
+        OTRO: {
+            label: "Otro",
+            color: "default",
         },
 
     };
 
-    const chip =
-        configuracion[formaPago] || {
+    const chip = configuracion[formaPago] || {
 
-            label: formaPago,
+        label: formaPago,
 
-            color: "default",
+        color: "default",
 
-        };
+    };
 
     return (
 
         <Chip
-
             label={chip.label}
-
             color={chip.color}
-
             size="small"
-
             variant="filled"
-
         />
 
     );

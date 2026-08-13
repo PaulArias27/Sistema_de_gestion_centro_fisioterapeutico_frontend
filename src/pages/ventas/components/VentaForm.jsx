@@ -249,38 +249,38 @@ function VentaForm({
             <Grid size={{ xs: 12, md: 6 }}>
 
                 <TextField
-                        select
-                        fullWidth
-                        margin="normal"
-                        label="Forma de pago"
-                        name="formaPago"
-                        value={formData.formaPago}
-                        onChange={onChange}
-                        error={!!errores.formaPago}
-                        helperText={errores.formaPago}
-                    >
+                    select
+                    fullWidth
+                    margin="normal"
+                    label="Forma de pago"
+                    name="formaPago"
+                    value={formData.formaPago}
+                    onChange={onChange}
+                    error={!!errores.formaPago}
+                    helperText={errores.formaPago}
+                >
 
-                        <MenuItem value="EFECTIVO">
-                            Efectivo
-                        </MenuItem>
+                    <MenuItem value="EFECTIVO">
+                        Efectivo
+                    </MenuItem>
 
-                        <MenuItem value="TRANSFERENCIA">
-                            Transferencia
-                        </MenuItem>
+                    <MenuItem value="TRANSFERENCIA">
+                        Transferencia
+                    </MenuItem>
 
-                        <MenuItem value="TARJETA">
-                            Tarjeta
-                        </MenuItem>
+                    <MenuItem value="TARJETA_DEBITO">
+                        Tarjeta de débito
+                    </MenuItem>
 
-                        <MenuItem value="DEPOSITO">
-                            Depósito
-                        </MenuItem>
+                    <MenuItem value="TARJETA_CREDITO">
+                        Tarjeta de crédito
+                    </MenuItem>
 
-                        <MenuItem value="BILLETERA_MOVIL">
-                            Billetera móvil
-                        </MenuItem>
+                    <MenuItem value="OTRO">
+                        Otro
+                    </MenuItem>
 
-                    </TextField>
+                </TextField>
 
                 <TextField
                     select
@@ -338,9 +338,11 @@ function VentaForm({
                     name="descuento"
                     value={formData.descuento}
                     onChange={onChange}
-                    inputProps={{
-                        min: 0,
-                        step: 0.01,
+                    slotProps={{
+                        htmlInput: {
+                            min: 0,
+                            step: 0.01,
+                        },
                     }}
                 />
 

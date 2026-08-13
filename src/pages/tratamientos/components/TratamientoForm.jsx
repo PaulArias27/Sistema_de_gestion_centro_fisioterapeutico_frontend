@@ -229,14 +229,14 @@ function TratamientoForm({
 
                         name="fechaInicio"
 
-                        value={formData.fechaInicio}
+                        value={formData.fechaInicio ?? ""}
 
                         onChange={onChange}
 
-                        InputLabelProps={{
-
-                            shrink: true,
-
+                        slotProps={{
+                            inputLabel: {
+                                shrink: true,
+                            },
                         }}
 
                         error={!!errores.fechaInicio}
@@ -259,14 +259,14 @@ function TratamientoForm({
 
                         name="fechaEstimadaAlta"
 
-                        value={formData.fechaEstimadaAlta}
+                        value={formData.fechaEstimadaAlta ?? ""}
 
                         onChange={onChange}
 
-                        InputLabelProps={{
-
-                            shrink: true,
-
+                        slotProps={{
+                            inputLabel: {
+                                shrink: true,
+                            },
                         }}
 
                     />
@@ -304,7 +304,7 @@ function TratamientoForm({
 
                         name="objetivoGeneral"
 
-                        value={formData.objetivoGeneral}
+                        value={formData.objetivoGeneral ?? ""}
 
                         onChange={onChange}
 
@@ -330,7 +330,7 @@ function TratamientoForm({
 
                         name="objetivosEspecificos"
 
-                        value={formData.objetivosEspecificos}
+                        value={formData.objetivosEspecificos ?? ""}
 
                         onChange={onChange}
 
@@ -356,7 +356,7 @@ function TratamientoForm({
 
                         name="diagnostico"
 
-                        value={formData.diagnostico}
+                        value={formData.diagnostico ?? ""}
 
                         onChange={onChange}
 
@@ -382,7 +382,7 @@ function TratamientoForm({
 
                         name="tratamientoPropuesto"
 
-                        value={formData.tratamientoPropuesto}
+                        value={formData.tratamientoPropuesto ?? ""}
 
                         onChange={onChange}
 
@@ -479,7 +479,7 @@ function TratamientoForm({
 
                         name="sesionesPlanificadas"
 
-                        value={formData.sesionesPlanificadas}
+                        value={formData.sesionesPlanificadas ?? 0}
 
                         onChange={onChange}
 
@@ -487,10 +487,10 @@ function TratamientoForm({
 
                         helperText={errores.sesionesPlanificadas}
 
-                        inputProps={{
-
-                            min: 1,
-
+                        slotProps={{
+                            htmlInput: {
+                                min: 1,
+                            },
                         }}
 
                     />
@@ -509,7 +509,7 @@ function TratamientoForm({
 
                         name="frecuenciaSemanal"
 
-                        value={formData.frecuenciaSemanal}
+                        value={formData.frecuenciaSemanal ?? 0}
 
                         onChange={onChange}
 
@@ -517,10 +517,10 @@ function TratamientoForm({
 
                         helperText={errores.frecuenciaSemanal}
 
-                        inputProps={{
-
-                            min: 1,
-
+                        slotProps={{
+                            htmlInput: {
+                                min: 1,
+                            },
                         }}
 
                     />
@@ -563,7 +563,7 @@ function TratamientoForm({
 
                         name="observacionesIniciales"
 
-                        value={formData.observacionesIniciales}
+                        value={formData.observacionesIniciales ?? ""}
 
                         onChange={onChange}
 
@@ -589,7 +589,7 @@ function TratamientoForm({
 
                         name="observacionesFinales"
 
-                        value={formData.observacionesFinales}
+                        value={formData.observacionesFinales ?? ""}
 
                         onChange={onChange}
 

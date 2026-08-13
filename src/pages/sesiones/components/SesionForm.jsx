@@ -152,21 +152,15 @@ function SesionForm({
                         <Grid size={{xs:12,md:6}}>
 
                             <TextField
-
                                 fullWidth
-
                                 label="Paciente"
-
                                 margin="normal"
-
-                                value={
-                                    formData.nombrePaciente || ""
-                                }
-
-                                InputProps={{
-                                    readOnly:true
+                                value={formData.nombrePaciente || ""}
+                                slotProps={{
+                                    input: {
+                                        readOnly: true,
+                                    },
                                 }}
-
                             />
 
                         </Grid>
@@ -185,8 +179,10 @@ function SesionForm({
                                     formData.nombreFisioterapeuta || ""
                                 }
 
-                                InputProps={{
-                                    readOnly:true
+                                slotProps={{
+                                    input: {
+                                        readOnly: true,
+                                    },
                                 }}
 
                             />
@@ -243,8 +239,10 @@ function SesionForm({
 
                                 onChange={onChange}
 
-                                InputLabelProps={{
-                                    shrink:true
+                                slotProps={{
+                                    inputLabel: {
+                                        shrink: true,
+                                    },
                                 }}
 
                             />
@@ -267,8 +265,10 @@ function SesionForm({
 
                                 onChange={onChange}
 
-                                InputLabelProps={{
-                                    shrink:true
+                                slotProps={{
+                                    inputLabel: {
+                                        shrink: true,
+                                    },
                                 }}
 
                             />
@@ -291,8 +291,10 @@ function SesionForm({
 
                                 onChange={onChange}
 
-                                InputLabelProps={{
-                                    shrink:true
+                                slotProps={{
+                                    inputLabel: {
+                                        shrink: true,
+                                    },
                                 }}
 
                             />

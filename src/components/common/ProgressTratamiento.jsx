@@ -53,7 +53,9 @@ function ProgressTratamiento({
             <Typography
                 variant="body2"
                 fontWeight="bold"
-                minWidth={40}
+                sx={{
+                    minWidth: 40,
+                }}
             >
 
                 {porcentaje}%

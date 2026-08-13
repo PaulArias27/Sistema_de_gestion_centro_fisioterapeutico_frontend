@@ -176,13 +176,11 @@ function UsuarioDetailsDialog({
                 <Divider sx={{ my: 3 }} />
 
                 <Box
-
-                    display="flex"
-
-                    gap={2}
-
-                    flexWrap="wrap"
-
+                    sx={{
+                        display: "flex",
+                        gap: 2,
+                        flexWrap: "wrap",
+                    }}
                 >
 
                     <Button

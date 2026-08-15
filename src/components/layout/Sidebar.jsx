@@ -56,14 +56,28 @@ function Sidebar({ open }) {
   return (
     <Box
       sx={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+
         width: open ? 250 : 72,
-        transition: "width .25s ease",
-        overflow: "hidden",
+
         height: "100vh",
+
+        transition: "width .25s ease",
+
         bgcolor: "#121212",
-        color: "#ffffff",
+
+        color: "#fff",
+
         display: "flex",
+
         flexDirection: "column",
+
+        overflow: "hidden",
+
+        zIndex: 1200,
+
         p: open ? 3 : 1.5,
       }}
     >

@@ -111,16 +111,6 @@ export const adminMenu = [
 export const fisioterapeutaMenu = [
 
     {
-        text: "Dashboard",
-        icon: <DashboardRoundedIcon />,
-        path: "/dashboard",
-    },
-
-    {
-        divider: true,
-    },
-
-    {
         text: "Pacientes",
         icon: <PeopleRoundedIcon />,
         path: "/pacientes",
@@ -152,6 +142,16 @@ export const fisioterapeutaMenu = [
         text: "Sesiones",
         icon: <FitnessCenterRoundedIcon />,
         path: "/sesiones",
+    },
+
+    {
+        divider: true,
+    },
+
+    {
+        text: "Ventas",
+        icon: <PointOfSaleRoundedIcon />,
+        path: "/ventas",
     },
 
 ];

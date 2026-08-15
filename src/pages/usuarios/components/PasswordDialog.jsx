@@ -1,11 +1,18 @@
+import { useState } from "react";
+
 import {
     Button,
     Dialog,
     DialogActions,
     DialogContent,
     DialogTitle,
+    IconButton,
+    InputAdornment,
     TextField,
 } from "@mui/material";
+
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 function PasswordDialog({
 
@@ -22,6 +29,8 @@ function PasswordDialog({
     errores,
 
 }) {
+
+    const [showPassword, setShowPassword] = useState(false);
 
     return (
 
@@ -46,25 +55,34 @@ function PasswordDialog({
             <DialogContent dividers>
 
                 <TextField
-
                     fullWidth
-
                     margin="normal"
-
-                    type="password"
-
+                    type={showPassword ? "text" : "password"}
                     label="Nueva contraseña"
-
                     name="nuevaPassword"
-
                     value={formData.nuevaPassword}
-
                     onChange={onChange}
-
                     error={!!errores.nuevaPassword}
-
                     helperText={errores.nuevaPassword}
-
+                    slotProps={{
+                        input: {
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        edge="end"
+                                        onClick={() =>
+                                            setShowPassword(!showPassword)
+                                        }
+                                        onMouseDown={(e) => e.preventDefault()}
+                                    >
+                                        {showPassword
+                                            ? <VisibilityOff />
+                                            : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
+                        },
+                    }}
                 />
 
             </DialogContent>

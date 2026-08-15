@@ -16,9 +16,17 @@ import TratamientoDetailsDialog from "./components/TratamientoDetailsDialog";
 
 import useTratamientos from "../../hooks/useTratamientos";
 
-import { obtenerPacientes } from "../../services/pacienteService";
-import { obtenerFisioterapeutas } from "../../services/fisioterapeutaService";
-import { obtenerEvaluaciones } from "../../services/evaluacionService";
+import {
+    obtenerPacientesActivos,
+} from "../../services/pacienteService";
+
+import {
+    obtenerFisioterapeutasActivos,
+} from "../../services/fisioterapeutaService";
+
+import {
+    obtenerEvaluaciones,
+} from "../../services/evaluacionService";
 
 function Tratamientos() {
 
@@ -118,21 +126,13 @@ function Tratamientos() {
         try {
 
             const [
-
                 pacientesRes,
-
                 fisioterapeutasRes,
-
                 evaluacionesRes,
-
             ] = await Promise.all([
-
-                obtenerPacientes(),
-
-                obtenerFisioterapeutas(),
-
+                obtenerPacientesActivos(),
+                obtenerFisioterapeutasActivos(),
                 obtenerEvaluaciones(),
-
             ]);
 
             setPacientes(pacientesRes);

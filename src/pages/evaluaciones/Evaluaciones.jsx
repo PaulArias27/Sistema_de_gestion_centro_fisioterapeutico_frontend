@@ -14,8 +14,8 @@ import EvaluacionDetailsDialog from "./components/EvaluacionDetailsDialog";
 
 import useEvaluaciones from "../../hooks/useEvaluaciones";
 
-import { obtenerPacientes } from "../../services/pacienteService";
-import { obtenerFisioterapeutas } from "../../services/fisioterapeutaService";
+import { obtenerPacientesActivos } from "../../services/pacienteService";
+import { obtenerFisioterapeutasActivos } from "../../services/fisioterapeutaService";
 
 function Evaluaciones() {
 
@@ -117,9 +117,8 @@ function Evaluaciones() {
 
             ] = await Promise.all([
 
-                obtenerPacientes(),
-
-                obtenerFisioterapeutas(),
+                obtenerPacientesActivos(),
+                obtenerFisioterapeutasActivos(),
 
             ]);
 

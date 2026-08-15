@@ -1,6 +1,5 @@
 import {
     Grid,
-    MenuItem,
     TextField,
     Typography,
     Divider,
@@ -81,139 +80,100 @@ function TratamientoForm({
 
                 <Grid size={{ xs: 12, md: 4 }}>
 
-                    <TextField
-
-                        select
-
-                        fullWidth
-
-                        label="Paciente"
-
-                        name="pacienteId"
-
-                        value={formData.pacienteId}
-
-                        onChange={onChange}
-
-                        error={!!errores.pacienteId}
-
-                        helperText={errores.pacienteId}
-
-                    >
-
-                        {
-
-                            pacientes.map((paciente) => (
-
-                                <MenuItem
-
-                                    key={paciente.id}
-
-                                    value={paciente.id}
-
-                                >
-
-                                    {paciente.nombres} {paciente.apellidos}
-
-                                </MenuItem>
-
-                            ))
-
+                    <Autocomplete
+                        options={pacientes}
+                        isOptionEqualToValue={(option, value) => option.id === value.id}
+                        getOptionLabel={(option) =>
+                            `${option.nombres} ${option.apellidos}`
                         }
-
-                    </TextField>
+                        value={
+                            pacientes.find(
+                                p => p.id === formData.pacienteId
+                            ) || null
+                        }
+                        onChange={(event, value) =>
+                            onChange({
+                                target: {
+                                    name: "pacienteId",
+                                    value: value?.id || "",
+                                },
+                            })
+                        }
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Paciente"
+                                error={!!errores.pacienteId}
+                                helperText={errores.pacienteId}
+                            />
+                        )}
+                    />
 
                 </Grid>
 
                 <Grid size={{ xs: 12, md: 4 }}>
 
-                    <TextField
-
-                        select
-
-                        fullWidth
-
-                        label="Fisioterapeuta"
-
-                        name="fisioterapeutaId"
-
-                        value={formData.fisioterapeutaId}
-
-                        onChange={onChange}
-
-                        error={!!errores.fisioterapeutaId}
-
-                        helperText={errores.fisioterapeutaId}
-
-                    >
-
-                        {
-
-                            fisioterapeutas.map((fisioterapeuta) => (
-
-                                <MenuItem
-
-                                    key={fisioterapeuta.id}
-
-                                    value={fisioterapeuta.id}
-
-                                >
-
-                                    {fisioterapeuta.nombres} {fisioterapeuta.apellidos}
-
-                                </MenuItem>
-
-                            ))
-
+                    <Autocomplete
+                        options={fisioterapeutas}
+                        isOptionEqualToValue={(option, value) => option.id === value.id}
+                        getOptionLabel={(option) =>
+                            `${option.nombres} ${option.apellidos}`
                         }
-
-                    </TextField>
+                        value={
+                            fisioterapeutas.find(
+                                f => f.id === formData.fisioterapeutaId
+                            ) || null
+                        }
+                        onChange={(event, value) =>
+                            onChange({
+                                target: {
+                                    name: "fisioterapeutaId",
+                                    value: value?.id || "",
+                                },
+                            })
+                        }
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Fisioterapeuta"
+                                error={!!errores.fisioterapeutaId}
+                                helperText={errores.fisioterapeutaId}
+                            />
+                        )}
+                    />
 
                 </Grid>
 
                 <Grid size={{ xs: 12, md: 4 }}>
 
-                    <TextField
-
-                        select
-
-                        fullWidth
-
-                        label="Evaluación"
-
-                        name="evaluacionId"
-
-                        value={formData.evaluacionId}
-
-                        onChange={onChange}
-
-                        error={!!errores.evaluacionId}
-
-                        helperText={errores.evaluacionId}
-
-                    >
-
-                        {
-
-                            evaluaciones.map((evaluacion) => (
-
-                                <MenuItem
-
-                                    key={evaluacion.id}
-
-                                    value={evaluacion.id}
-
-                                >
-
-                                    {evaluacion.codigoEvaluacion}
-
-                                </MenuItem>
-
-                            ))
-
+                    <Autocomplete
+                        options={evaluaciones}
+                        isOptionEqualToValue={(option, value) => option.id === value.id}
+                        getOptionLabel={(option) =>
+                            option.codigoEvaluacion || ""
                         }
-
-                    </TextField>
+                        value={
+                            evaluaciones.find(
+                                e => e.id === formData.evaluacionId
+                            ) || null
+                        }
+                        onChange={(event, value) =>
+                            onChange({
+                                target: {
+                                    name: "evaluacionId",
+                                    value: value?.id || "",
+                                },
+                            })
+                        }
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Evaluación"
+                                error={!!errores.evaluacionId}
+                                helperText={errores.evaluacionId}
+                            />
+                        )}
+                    />
 
                 </Grid>
 

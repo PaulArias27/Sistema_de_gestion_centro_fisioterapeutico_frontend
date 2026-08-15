@@ -3,13 +3,19 @@ import {
   Alert,
   Button,
   CircularProgress,
+  IconButton,
+  InputAdornment,
   Paper,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
 
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 import { useNavigate } from "react-router-dom";
+import { getHomeByRole } from "../../../utils/roleRedirect";
 
 import { login as loginService } from "../../../services/authService";
 import { useAuth } from "../../../hooks/useAuth";
@@ -38,6 +44,8 @@ function LoginForm() {
 
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit = async (e) => {
 
     e.preventDefault();
@@ -52,7 +60,9 @@ function LoginForm() {
 
       login(response);
 
-      navigate("/");
+      navigate(getHomeByRole(response.rol), {
+          replace: true,
+      });
 
     } catch (err) {
 
@@ -118,14 +128,33 @@ function LoginForm() {
           />
 
           <TextField
-            label="Contraseña"
-            name="password"
-            type="password"
-            value={form.password}
-            onChange={handleChange}
-            fullWidth
-            required
-          />
+              label="Contraseña"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              value={form.password}
+              onChange={handleChange}
+              fullWidth
+              required
+              slotProps={{
+                input: {
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        edge="end"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        onMouseDown={(e) => e.preventDefault()}
+                      >
+                        {showPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                },
+              }}
+            />
 
           <Button
             type="submit"

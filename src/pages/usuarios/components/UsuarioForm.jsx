@@ -1,12 +1,15 @@
+import { useState } from "react";
+
 import {
-
     Grid,
-
+    IconButton,
+    InputAdornment,
     MenuItem,
-
     TextField,
-
 } from "@mui/material";
+
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 function UsuarioForm({
 
@@ -19,6 +22,8 @@ function UsuarioForm({
     editando,
 
 }) {
+
+    const [showPassword, setShowPassword] = useState(false);
 
     return (
 
@@ -94,23 +99,35 @@ function UsuarioForm({
                 <Grid size={12}>
 
                     <TextField
-
                         fullWidth
-
-                        type="password"
-
+                        type={showPassword ? "text" : "password"}
                         label="Contraseña"
-
                         name="password"
-
                         value={formData.password}
-
                         onChange={onChange}
-
                         error={!!errores.password}
-
                         helperText={errores.password}
-
+                        slotProps={{
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            edge="end"
+                                            onClick={() =>
+                                                setShowPassword((prev) => !prev)
+                                            }
+                                            onMouseDown={(e) => e.preventDefault()}
+                                        >
+                                            {showPassword ? (
+                                                <VisibilityOff />
+                                            ) : (
+                                                <Visibility />
+                                            )}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            },
+                        }}
                     />
 
                 </Grid>

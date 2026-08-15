@@ -1,10 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 
 import Login from "../pages/auth/Login";
 import Dashboard from "../pages/dashboard/Dashboard";
 
 import MainLayout from "../components/layout/MainLayout";
-import PrivateRoute from "./PrivateRoute";
 import Pacientes from "../pages/pacientes/Pacientes";
 import Fisioterapeutas from "../pages/fisioterapeutas/Fisioterapeutas";
 import Servicios from "../pages/servicios/Servicios";
@@ -16,6 +15,8 @@ import Tratamientos from "../pages/tratamientos/Tratamientos";
 import Evaluaciones from "../pages/evaluaciones/Evaluaciones";
 import Usuarios from "../pages/usuarios/Usuarios";
 import Configuraciones from "../pages/configuraciones/Configuraciones";
+import HomeRedirect from "./HomeRedirect";
+import RoleRoute from "./RoleRoute";
 
 function AppRoutes() {
 
@@ -33,136 +34,136 @@ function AppRoutes() {
                 <Route
                     path="/dashboard"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN"]}>
                             <MainLayout>
                                 <Dashboard />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/"
-                    element={<Navigate to="/dashboard" replace />}
+                    element={<HomeRedirect />}
                 />
 
-                <Route
+               <Route
                     path="/pacientes"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN", "FISIOTERAPEUTA"]}>
                             <MainLayout>
                                 <Pacientes />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/fisioterapeutas"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN"]}>
                             <MainLayout>
                                 <Fisioterapeutas />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
                 <Route
                     path="/servicios"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN"]}>
                             <MainLayout>
                                 <Servicios />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/sucursales"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN"]}>
                             <MainLayout>
                                 <Sucursales />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/tratamientos"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN", "FISIOTERAPEUTA"]}>
                             <MainLayout>
                                 <Tratamientos />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/evaluaciones"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN", "FISIOTERAPEUTA"]}>
                             <MainLayout>
                                 <Evaluaciones />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/ventas"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN", "FISIOTERAPEUTA"]}>
                             <MainLayout>
                                 <Ventas />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/citas"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN", "FISIOTERAPEUTA"]}>
                             <MainLayout>
                                 <Citas />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/sesiones"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN", "FISIOTERAPEUTA"]}>
                             <MainLayout>
                                 <Sesiones />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/usuarios"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN"]}>
                             <MainLayout>
                                 <Usuarios />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 
                 <Route
                     path="/configuraciones"
                     element={
-                        <PrivateRoute>
+                        <RoleRoute roles={["ADMIN"]}>
                             <MainLayout>
                                 <Configuraciones />
                             </MainLayout>
-                        </PrivateRoute>
+                        </RoleRoute>
                     }
                 />
 

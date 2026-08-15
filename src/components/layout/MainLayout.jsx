@@ -21,17 +21,29 @@ function MainLayout({ children }) {
       />
 
       <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          width: `calc(100% - ${sidebarOpen ? drawerWidth : 72}px)`,
-          transition: "width .25s ease",
-          display: "flex",
-          flexDirection: "column",
-          minWidth: 0,
-          bgcolor: "#F5F5F5",
-        }}
-      >
+          component="main"
+          sx={{
+            flexGrow: 1,
+
+            ml: sidebarOpen ? `${drawerWidth}px` : "72px",
+
+            width: sidebarOpen
+              ? `calc(100% - ${drawerWidth}px)`
+              : "calc(100% - 72px)",
+
+            transition: "margin .25s ease, width .25s ease",
+
+            display: "flex",
+
+            flexDirection: "column",
+
+            minWidth: 0,
+
+            bgcolor: "#F5F5F5",
+
+            minHeight: "100vh",
+          }}
+        >
 
         <Topbar
             sidebarOpen={sidebarOpen}
@@ -42,7 +54,8 @@ function MainLayout({ children }) {
           sx={{
             flex: 1,
             p: 3,
-            overflow: "auto",
+            overflowY: "auto",
+            overflowX: "hidden",
           }}
         >
           {children}

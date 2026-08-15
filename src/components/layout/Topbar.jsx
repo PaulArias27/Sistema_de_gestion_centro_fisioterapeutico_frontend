@@ -90,18 +90,19 @@ function Topbar({
 
   return (
     <AppBar
-      position="sticky"
-      elevation={0}
-      sx={{
+        position="sticky"
+        elevation={0}
+        sx={{
+            bgcolor: "#fff",
+            color: "#212121",
 
-            zIndex:(theme)=>theme.zIndex.drawer+1,
+            borderBottom: "1px solid #ECECEC",
 
-            bgcolor:"#fff",
+            boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
 
-            color:"#212121"
-
+            transition: ".25s",
         }}
-   >
+    >
       <Toolbar
         sx={{
           justifyContent: "space-between",

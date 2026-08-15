@@ -1,7 +1,7 @@
-import { Divider, Grid, MenuItem, Paper, TextField, Typography } from "@mui/material";
+import { Divider, Grid, Autocomplete, Paper, TextField, Typography } from "@mui/material";
 
 function EvaluacionForm({ formData, onChange, errores, pacientes, fisioterapeutas }) {
-    const activos = (items) => items.filter((item) => item.estado === "ACTIVO");
+    
     const campo = (name, label, opciones = {}) => (
         <TextField fullWidth name={name} label={label} value={formData[name] ?? ""}
             onChange={onChange} error={Boolean(errores[name])} helperText={errores[name]} {...opciones} />
@@ -15,26 +15,66 @@ function EvaluacionForm({ formData, onChange, errores, pacientes, fisioterapeuta
                     <Divider sx={{ mb: 2.5 }} />
                     <Grid container spacing={2}>
                         <Grid size={{ xs: 12, md: 6 }}>
-                            <TextField select required fullWidth name="pacienteId" label="Paciente"
-                                value={formData.pacienteId ?? ""} onChange={onChange}
-                                error={Boolean(errores.pacienteId)} helperText={errores.pacienteId}>
-                                {activos(pacientes).map((paciente) => (
-                                    <MenuItem key={paciente.id} value={paciente.id}>
-                                        {paciente.nombres} {paciente.apellidos} — {paciente.cedula}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
+                            <Autocomplete
+                                options={pacientes}
+                                isOptionEqualToValue={(option, value) => option.id === value.id}
+                                getOptionLabel={(option) =>
+                                    `${option.nombres} ${option.apellidos} — ${option.cedula}`
+                                }
+                                value={
+                                    pacientes.find(
+                                        (p) => p.id === formData.pacienteId
+                                    ) || null
+                                }
+                                onChange={(event, value) =>
+                                    onChange({
+                                        target: {
+                                            name: "pacienteId",
+                                            value: value?.id || "",
+                                        },
+                                    })
+                                }
+                                renderInput={(params) => (
+                                    <TextField
+                                        {...params}
+                                        required
+                                        label="Paciente"
+                                        error={!!errores.pacienteId}
+                                        helperText={errores.pacienteId}
+                                    />
+                                )}
+                            />
                         </Grid>
                         <Grid size={{ xs: 12, md: 6 }}>
-                            <TextField select required fullWidth name="fisioterapeutaId" label="Fisioterapeuta"
-                                value={formData.fisioterapeutaId ?? ""} onChange={onChange}
-                                error={Boolean(errores.fisioterapeutaId)} helperText={errores.fisioterapeutaId}>
-                                {activos(fisioterapeutas).map((fisioterapeuta) => (
-                                    <MenuItem key={fisioterapeuta.id} value={fisioterapeuta.id}>
-                                        {fisioterapeuta.nombres} {fisioterapeuta.apellidos}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
+                            <Autocomplete
+                                options={fisioterapeutas}
+                                isOptionEqualToValue={(option, value) => option.id === value.id}
+                                getOptionLabel={(option) =>
+                                    `${option.nombres} ${option.apellidos}`
+                                }
+                                value={
+                                    fisioterapeutas.find(
+                                        (f) => f.id === formData.fisioterapeutaId
+                                    ) || null
+                                }
+                                onChange={(event, value) =>
+                                    onChange({
+                                        target: {
+                                            name: "fisioterapeutaId",
+                                            value: value?.id || "",
+                                        },
+                                    })
+                                }
+                                renderInput={(params) => (
+                                    <TextField
+                                        {...params}
+                                        required
+                                        label="Fisioterapeuta"
+                                        error={!!errores.fisioterapeutaId}
+                                        helperText={errores.fisioterapeutaId}
+                                    />
+                                )}
+                            />
                         </Grid>
                         <Grid size={{ xs: 12, md: 4 }}>{campo("fechaEvaluacion", "Fecha de evaluación", { type: "date", slotProps: { inputLabel: { shrink: true } } })}</Grid>
                         <Grid size={{ xs: 12, md: 8 }}>{campo("motivoConsulta", "Motivo de consulta", { multiline: true, rows: 2 })}</Grid>

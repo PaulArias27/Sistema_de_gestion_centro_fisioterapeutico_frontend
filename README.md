@@ -1,16 +1,287 @@
-# React + Vite
+# 🧡 Kinesio Vitality - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend del sistema **Kinesio Vitality**, una plataforma web desarrollada para la gestión integral de centros de fisioterapia.
 
-Currently, two official plugins are available:
+La aplicación permite administrar pacientes, fisioterapeutas, citas, evaluaciones, tratamientos, sesiones, ventas y usuarios desde una interfaz moderna, intuitiva y responsive.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Tecnologías utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite
+- Material UI (MUI)
+- React Router DOM
+- Axios
+- Context API
+- JavaScript (ES6+)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Estructura del proyecto
+
+```text
+src/
+│
+├── api/
+├── assets/
+├── components/
+│   ├── common/
+│   ├── layout/
+│   └── ui/
+│
+├── config/
+├── context/
+├── hooks/
+├── pages/
+│   ├── auth/
+│   ├── dashboard/
+│   ├── pacientes/
+│   ├── fisioterapeutas/
+│   ├── citas/
+│   ├── evaluaciones/
+│   ├── tratamientos/
+│   ├── sesiones/
+│   ├── ventas/
+│   ├── usuarios/
+│   ├── servicios/
+│   └── configuraciones/
+│
+├── routes/
+├── services/
+├── utils/
+│
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+# ✨ Características principales
+
+## 🔐 Autenticación
+
+- Inicio de sesión mediante JWT
+- Roles de usuario
+- Protección de rutas
+- Cambio obligatorio de contraseña
+- Cierre de sesión seguro
+
+---
+
+## 📊 Dashboard
+
+- Indicadores generales
+- Estadísticas del centro
+- Resumen operativo
+
+---
+
+## 👤 Pacientes
+
+- Registro
+- Edición
+- Historial
+- Búsqueda dinámica
+
+---
+
+## 🩺 Fisioterapeutas
+
+- Registro
+- Gestión de información
+- Estado activo/inactivo
+
+---
+
+## 📅 Citas
+
+- Agenda
+- Programación
+- Estado de citas
+
+---
+
+## 📋 Evaluaciones
+
+- Evaluaciones fisioterapéuticas
+- Escala EVA
+- Diagnóstico
+- Objetivos terapéuticos
+
+---
+
+## ❤️ Tratamientos
+
+- Plan terapéutico
+- Técnicas aplicadas
+- Objetivos
+- Planificación
+- Seguimiento
+
+---
+
+## 🏃 Sesiones
+
+- Registro de sesiones
+- Evolución del paciente
+- Observaciones clínicas
+
+---
+
+## 💰 Ventas
+
+- Registro de ventas
+- Gestión de paquetes
+- Control comercial
+
+---
+
+## 👥 Usuarios
+
+- Administración de usuarios
+- Roles
+- Cambio de contraseña
+- Activación/Inactivación
+
+---
+
+## ⚙ Configuración
+
+- Configuración general del sistema
+
+---
+
+# 🎨 Diseño
+
+La interfaz fue desarrollada siguiendo una línea moderna utilizando Material UI.
+
+Características:
+
+- Responsive
+- Sidebar colapsable
+- Topbar moderna
+- Formularios organizados
+- Búsquedas dinámicas
+- Tablas responsivas
+- Diálogos reutilizables
+- Componentes reutilizables
+
+---
+
+# 🔐 Control de acceso
+
+Actualmente el sistema maneja dos perfiles:
+
+| Rol | Permisos |
+|------|----------|
+| ADMIN | Acceso total al sistema |
+| FISIOTERAPEUTA | Acceso únicamente a los módulos autorizados |
+
+Las rutas están protegidas tanto en el Frontend como en el Backend.
+
+---
+
+# 🔗 Backend
+
+Este proyecto consume una API REST desarrollada con:
+
+- Spring Boot
+- Spring Security
+- JWT
+- PostgreSQL
+- Hibernate
+- JPA
+
+---
+
+# ⚙ Instalación
+
+Clonar el repositorio
+
+```bash
+git clone https://github.com/usuario/kinesio-vitality-frontend.git
+```
+
+Entrar al proyecto
+
+```bash
+cd kinesio-vitality-frontend
+```
+
+Instalar dependencias
+
+```bash
+npm install
+```
+
+Ejecutar en desarrollo
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en:
+
+```
+http://localhost:5173
+```
+
+---
+
+# 📦 Compilar producción
+
+```bash
+npm run build
+```
+
+Vista previa del build
+
+```bash
+npm run preview
+```
+
+---
+
+# 📁 Variables de entorno
+
+Crear un archivo:
+
+```
+.env
+```
+
+Ejemplo:
+
+```env
+VITE_API_URL=http://localhost:8080/api
+```
+
+---
+
+# 📌 Estado del proyecto
+
+✅ En desarrollo activo.
+
+El sistema continúa incorporando nuevas funcionalidades y mejoras visuales.
+
+---
+
+# 👨‍💻 Autor
+
+**Paul Arias**
+
+Desarrollador Full Stack
+
+- Java
+- Spring Boot
+- React
+- PostgreSQL
+
+---
+
+# 📄 Licencia
+
+Proyecto desarrollado para uso privado del cliente.
+
+Todos los derechos reservados.

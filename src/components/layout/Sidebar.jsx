@@ -210,11 +210,13 @@ function Sidebar({ open }) {
 
                         <ListItemText
                             primary={item.text}
-                            primaryTypographyProps={{
-                                sx: {
-                                    color: "#FFFFFF",
-                                    fontSize: 15,
-                                    fontWeight: 500,
+                            slotProps={{
+                                primary: {
+                                    sx: {
+                                        color: "#FFFFFF",
+                                        fontSize: 15,
+                                        fontWeight: 500,
+                                    },
                                 },
                             }}
                         />

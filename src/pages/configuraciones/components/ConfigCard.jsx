@@ -41,9 +41,11 @@ function ConfigCard({
                 <CardContent>
 
                     <Box
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="space-between"
+                        sx={{
+                            display:"flex",
+                            alignItems:"center",
+                            justifyContent:"space-between",
+                        }}
                     >
 
                         <Box

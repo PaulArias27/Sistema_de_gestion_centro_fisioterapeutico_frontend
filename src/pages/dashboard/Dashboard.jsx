@@ -35,9 +35,11 @@ function Dashboard() {
         return (
 
             <Box
-                display="flex"
-                justifyContent="center"
-                mt={10}
+                sx={{
+                    display:"flex",
+                    justifyContent:"center",
+                    mt:10,
+                }}
             >
 
                 <CircularProgress />

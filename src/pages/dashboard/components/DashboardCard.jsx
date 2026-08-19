@@ -48,13 +48,13 @@ function DashboardCard({
             <CardContent>
 
                 <Box
+                    sx={{
+                        display:"flex",
 
-                    display="flex"
+                        justifyContent:"space-between",
 
-                    justifyContent="space-between"
-
-                    alignItems="flex-start"
-
+                        alignItems:"flex-start",
+                    }}
                 >
 
                     <Box>

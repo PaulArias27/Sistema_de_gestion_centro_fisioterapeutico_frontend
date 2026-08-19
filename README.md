@@ -284,4 +284,6 @@ Desarrollador Full Stack
 
 Proyecto desarrollado para uso privado del cliente.
 
+Última actualización: Agosto 2026.
+
 Todos los derechos reservados.
